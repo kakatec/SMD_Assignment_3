@@ -3,83 +3,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ScheduleFragment">
+    tools:context=".fragments.ScheduleFragment"
+    android:background="#FAFAFA">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:padding="16dp">
 
-        <LinearLayout
+        <!-- Scrollable Inputs -->
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_weight="1"
+            android:fillViewport="true">
 
-            <!-- Title Input -->
-            <EditText
-                android:id="@+id/titleInput"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Title"
-                android:inputType="text"
-                android:layout_marginBottom="12dp" />
+                android:orientation="vertical">
 
-            <!-- Description Input -->
-            <EditText
-                android:id="@+id/descInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Description"
-                android:inputType="textMultiLine"
-                android:minLines="3"
-                android:gravity="top"
-                android:layout_marginBottom="12dp" />
+                <EditText
+                    android:id="@+id/titleInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Title"
+                    android:inputType="text"
+                    android:background="@android:drawable/editbox_background"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp" />
 
-            <!-- DateTime Display -->
-            <TextView
-                android:id="@+id/datetimeDisplay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="No date/time selected"
-                android:padding="8dp"
-                android:background="#EEE"
-                android:textColor="#000"
-                android:layout_marginBottom="8dp" />
+                <EditText
+                    android:id="@+id/descInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:gravity="top"
+                    android:background="@android:drawable/editbox_background"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp" />
 
-            <!-- Pick DateTime Button -->
-            <Button
-                android:id="@+id/pickDatetimeBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pick Date  Time"
-                android:layout_marginBottom="16dp" />
+                <TextView
+                    android:id="@+id/datetimeDisplay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No date/time selected"
+                    android:textColor="#555"
+                    android:padding="12dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
 
-            <!-- Save Button -->
-            <Button
-                android:id="@+id/saveBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Save Task"
-                android:layout_marginBottom="24dp" />
+                <Button
+                    android:id="@+id/pickDatetimeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick Date  Time"
+                    android:layout_marginBottom="24dp" />
 
-            <!-- Upcoming Tasks Header -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Upcoming Tasks"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginBottom="8dp" />
+                <Button
+                    android:id="@+id/saveBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Save Task"
+                    android:backgroundTint="#00796B"
+                    android:textColor="#fff"
+                    android:layout_marginBottom="24dp" />
+            </LinearLayout>
+        </ScrollView>
 
-            <!-- ListView for Upcoming Tasks -->
-            <ListView
-                android:id="@+id/upcomingTasksList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@android:color/darker_gray"
-                android:dividerHeight="1dp"
-                android:nestedScrollingEnabled="true" />
+        <!-- Static Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upcoming Tasks"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginBottom="8dp"
+            android:paddingTop="0dp" />
 
-        </LinearLayout>
-    </ScrollView>
+        <!-- Task List with proper spacing -->
+        <ListView
+            android:id="@+id/upcomingTasksList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="10dp"
+            android:padding="4dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical" />
+    </LinearLayout>
+
 </FrameLayout>

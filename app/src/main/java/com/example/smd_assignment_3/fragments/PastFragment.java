@@ -36,10 +36,21 @@ public class PastFragment extends Fragment {
     private void showPastTasks() {
         ArrayList<String> tasks = new ArrayList<>();
         Cursor cursor = dbHelper.getPastTasks();
+
         while (cursor.moveToNext()) {
-            tasks.add(cursor.getString(1) + "\n" + cursor.getString(2) + "\n" + cursor.getString(3));
+            String title = cursor.getString(1);
+            String desc = cursor.getString(2);
+
+            // Convert timestamp to readable format
+            long timestamp = cursor.getLong(3);
+            String formattedDate = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.getDefault())
+                    .format(new java.util.Date(timestamp));
+
+            tasks.add(title + "\n" + desc + "\n" + formattedDate);
         }
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, tasks);
         pastTasksList.setAdapter(adapter);
     }
+
 }
